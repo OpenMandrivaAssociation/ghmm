@@ -8,7 +8,7 @@
 Name:		%{name}
 Version:	%{version}
 Release:	%mkrel 1
-Group:		Science/Mathematics
+Group:		Sciences/Mathematics
 License:	LGPL
 Summary:	General Hidden Markov Model library
 # svn co https://ghmm.svn.sourceforge.net/svnroot/ghmm/trunk/ghmm
