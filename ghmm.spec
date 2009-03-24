@@ -7,7 +7,7 @@
 
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 2
+Release:	%mkrel 3
 Group:		Sciences/Mathematics
 License:	LGPL
 Summary:	General Hidden Markov Model library
@@ -108,3 +108,4 @@ sh autogen.sh
 %files		-n python-%{name}
 %defattr(-,root,root)
 %{py_platlibdir}/*
+%{py_sitedir}/*
