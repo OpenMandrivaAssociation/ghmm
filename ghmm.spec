@@ -1,4 +1,4 @@
-%define with_gsl	2
+%define with_gsl	1
 %define name		ghmm
 %define version		0.20090317
 
@@ -7,7 +7,7 @@
 
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 1
+Release:	%mkrel 2
 Group:		Sciences/Mathematics
 License:	LGPL
 Summary:	General Hidden Markov Model library
