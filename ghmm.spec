@@ -1,4 +1,4 @@
-%define with_gsl	1
+%define with_gsl	2
 %define name		ghmm
 %define version		0.20090317
 
@@ -107,4 +107,4 @@ sh autogen.sh
 
 %files		-n python-%{name}
 %defattr(-,root,root)
-%{python_sitelib}/*
+%{py_platlibdir}/*
