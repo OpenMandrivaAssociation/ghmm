@@ -7,7 +7,7 @@
 
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 3
+Release:	%mkrel 4
 Group:		Sciences/Mathematics
 License:	LGPL
 Summary:	General Hidden Markov Model library
@@ -73,6 +73,7 @@ sed -i 's|setup.py install|setup.py install --root=%{buildroot}|'	\
 
 sh autogen.sh
 
+CFLAGS="%{optflags} -fPIC"	\
 %configure		\
 %if %{with_gsl}
 	--enable-gsl	\
