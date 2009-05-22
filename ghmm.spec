@@ -7,7 +7,7 @@
 
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 4
+Release:	%mkrel 5
 Group:		Sciences/Mathematics
 License:	LGPL
 Summary:	General Hidden Markov Model library
@@ -25,6 +25,7 @@ BuildRequires:	python-devel
 BuildRequires:	swig
 
 Requires:	python-Gato
+Requires:	python-%{name}
 
 %description
 The General Hidden Markov Model library (GHMM) is a freely available
