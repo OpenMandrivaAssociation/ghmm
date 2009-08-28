@@ -1,21 +1,22 @@
 %define with_gsl	1
 %define name		ghmm
-%define version		0.20090317
+# use this until version 1.0, instead of a date to avoid the need of Epoch
+# and still make upgrades work correctly from 0.20090317 t0 0.9-rc1
+%define version		0.90000001
+%define upstream	0.9-rc1
 
 %define libname		%mklibname %{name}
 %define libname_devel	%mklibname %{name} -d
 
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 5
+Release:	%mkrel 1
 Group:		Sciences/Mathematics
 License:	LGPL
 Summary:	General Hidden Markov Model library
-# svn co https://ghmm.svn.sourceforge.net/svnroot/ghmm/trunk/ghmm
-# tar jcvf ghmm-0.`date +%\Y%\m%\d`.tar.bz2 ghmm
-Source:		%{name}-%{version}.tar.bz2
+Source:		%{name}-%{upstream}.tar.gz
 URL:		http://ghmm.org/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{upstream}-buildroot
 
 %if %{with_gsl}
 BuildRequires:	libgsl-devel
@@ -66,7 +67,7 @@ Group:		Development/Python
 This package contains Python bindings for %{name}.
 
 %prep
-%setup -q -n %{name}
+%setup -q -n %{name}-%{upstream}
 
 %build
 sed -i 's|setup.py install|setup.py install --root=%{buildroot}|'	\
