@@ -7,10 +7,11 @@
 
 %define libname		%mklibname %{name}
 %define libname_devel	%mklibname %{name} -d
+%define libname_static	%mklibname %{name} -d -s
 
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 1
+Release:	%mkrel 2
 Group:		Sciences/Mathematics
 License:	LGPL
 Summary:	General Hidden Markov Model library
@@ -58,6 +59,15 @@ Obsoletes:	%{name}-devel < %{version}-%{release}
 
 %description -n %{libname_devel}
 This package provides the %{name} development files.
+
+%package	-n %{libname_static}
+Summary:	%{name} development files
+Group:		Development/C
+Provides:	%{name}-static-devel = %{version}-%{release}
+Obsoletes:	%{name}-static-devel < %{version}-%{release}
+
+%description -n %{libname_static}
+This package provides the %{name} static libraries.
 
 %package -n	python-%{name}
 Summary:	Python bindings for %{name}
@@ -112,3 +122,9 @@ CFLAGS="%{optflags} -fPIC"	\
 %defattr(-,root,root)
 %{py_platlibdir}/*
 %{py_sitedir}/*
+
+%files		-n %{libname_static}
+%defattr(-,root,root)
+%dir %{_includedir}/%{name}
+%{_includedir}/%{name}/*
+%{_libdir}/lib%{name}.a
