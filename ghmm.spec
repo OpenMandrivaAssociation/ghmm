@@ -1,3 +1,4 @@
+%define with_atlas	1
 %define with_gsl	1
 %define name		ghmm
 # use this until version 1.0, instead of a date to avoid the need of Epoch
@@ -11,13 +12,17 @@
 
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 2
+Release:	%mkrel 3
 Group:		Sciences/Mathematics
 License:	LGPL
 Summary:	General Hidden Markov Model library
 Source:		%{name}-%{upstream}.tar.gz
 URL:		http://ghmm.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{upstream}-buildroot
+
+%if %{with_atlas}
+BuildRequires:	libatlas-devel
+%endif
 
 %if %{with_gsl}
 BuildRequires:	libgsl-devel
@@ -85,12 +90,20 @@ sed -i 's|setup.py install|setup.py install --root=%{buildroot}|'	\
 
 sh autogen.sh
 
-CFLAGS="%{optflags} -fPIC"	\
-%configure		\
-%if %{with_gsl}
-	--enable-gsl	\
+CFLAGS="%{optflags} -fPIC"				\
+%if %{with_atlas}
+	LAPACK_LIBS="-L%{_libdir}/atlas -llapack"	\
+%endif
+%configure						\
+%if %{with_atlas}
+	--enable-atlas					\
 %else
-	--with-rng=bsd
+	--disable-atlas					\
+%endif
+%if %{with_gsl}
+	--enable-gsl					\
+%else
+	--with-rng=bsd					\
 %endif
 
 %make
