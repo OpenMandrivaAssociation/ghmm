@@ -17,7 +17,7 @@ Group:		Sciences/Mathematics
 License:	LGPL
 Summary:	General Hidden Markov Model library
 Source:		%{name}-%{upstream}.tar.gz
-URL:		http://ghmm.org/
+URL:		https://ghmm.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{upstream}-buildroot
 
 %if %{with_atlas}
